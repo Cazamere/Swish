@@ -41,9 +41,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.session.run(configuration)
         self.sceneView.autoenablesDefaultLighting = true
         self.sceneView.delegate = self
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.cancelsTouchesInView = false
+        
+        // initialize swipe recognition
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        self.sceneView.addGestureRecognizer(swipeGestureRecognizer)
+        swipeGestureRecognizer.cancelsTouchesInView = false
         
         // add timer
         gameTime = 5 // CHANGE GAME TIME AS NEEDED
@@ -61,7 +63,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.basketAdded == true {
             timer.perform(closure: { () -> NextStep in
-                self.power = self.power + 1
+                //self.power = self.power + 1
                 return .continue
             })
         }
@@ -72,7 +74,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.timer.stop()
             self.shootBall()
         }
-        self.power = 1
+        //self.power = 1
     } // called when you lift finger off-calls shootBall() to shoot the ball da doiiii
     
     func shootBall() {
@@ -96,14 +98,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     } // create and shoot ball
     
-    @objc func handleTap(sender: UITapGestureRecognizer) {
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
         guard let sceneView = sender.view as? ARSCNView else {return}
-        let touchLocation = sender.location(in: sceneView)
-        let hitTestResult = sceneView.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
-        if !hitTestResult.isEmpty {
-            self.addBasket(hitTestResult: hitTestResult.first!)
+        
+        if sender.state == .ended {
+            let touchLocation = sender.location(in: sceneView)
+            let hitTestResult = sceneView.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
+            if !hitTestResult.isEmpty {
+                self.addBasket(hitTestResult: hitTestResult.first!)
+            }
         }
-    }
+
+    } // handle swiping motion
     
     func addBasket(hitTestResult: ARHitTestResult) {
         if basketAdded == false {

@@ -316,7 +316,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Swish/Pods-Swish-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Swish/Pods-Swish-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Each/Each.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -327,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swish/Pods-Swish-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swish/Pods-Swish-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -514,15 +514,18 @@
 			baseConfigurationReference = 8306D5EA21388E31D6428686 /* Pods-Swish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7WP78UA9GF;
+				DEVELOPMENT_TEAM = BD8J83556U;
 				INFOPLIST_FILE = Swish/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = C.Swish;
+				PRODUCT_BUNDLE_IDENTIFIER = C.Swish123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -533,15 +536,18 @@
 			baseConfigurationReference = A7CE148EB475BDDB44407694 /* Pods-Swish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7WP78UA9GF;
+				DEVELOPMENT_TEAM = BD8J83556U;
 				INFOPLIST_FILE = Swish/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = C.Swish;
+				PRODUCT_BUNDLE_IDENTIFIER = C.Swish123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
